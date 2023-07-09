@@ -13,7 +13,7 @@ module.exports = {
   getPet: async (req, res) => {
     try {
       const pets = await Pet.findById(req.params.id);
-      res.render("Pet.ejs", { pets: pets, user: req.user });
+      res.render("pet.ejs", { pets: pets, user: req.user });
     } catch (err) {
       console.log(err);
     }
