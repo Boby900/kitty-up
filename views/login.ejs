@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pets Up For Adoption</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/9a1d33ccb7.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+
+
+  <section>
+  
+    <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">  <i
+              class="fa-sharp fa-solid fa-paw"></i> Pets Up</span>
+        </a>
+        <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+          <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+            <li>
+              <a href="/home" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+            </li>
+            <li>
+              <a href="/login" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+            </li>
+            <li>
+              <a href="/signup" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Sign Up</a>
+            </li>
+            <li>
+              <a href="/logout" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    </section>
+
+  <main class="container">
+    <div class="row justify-content-center">
+      <section class="col-6 mt-5">
+        <% if (locals.messages.errors) { %>
+          <% messages.errors.forEach( el=> { %>
+            <div class="alert alert-danger">
+              <%= el.msg %>
+            </div>
+            <% }) %>
+              <% } %>
+                <% if (locals.messages.info) { %>
+                  <% messages.info.forEach( el=> { %>
+                    <div class="alert alert-info">
+                      <%= el.msg %>
+                    </div>
+                    <% }) %>
+                      <% } %>
+
+      </section>
+    </div>
+  </main>
+
+
+  <form action="/login" method="POST">
+    <div>
+
+      <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          <img class="mx-auto h-10 w-auto" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOUAAADcCAMAAAC4YpZBAAAAhFBMVEUAAAD///+urq76+vrw8PD29vbS0tK6urqqqqq+vr7d3d2np6eAgIDGxsaSkpLt7e2IiIhlZWU4ODglJSVOTk7k5OTMzMx3d3dYWFgwMDDf39/n5+eQkJBvb29ISEggICBBQUGenp4UFBRhYWFycnJTU1MzMzMMDAyZmZkbGxs9PT0rKyuXTF/AAAAMHUlEQVR4nN1dWVsiOxCNrILIog4iioLKuP3//3dZBHqpJHVO9cKd8zDfPEhRh05XKrXFXRSCdrtZjKA9+lfvD869Lief14XIdWYJrcbi1m3x895oFaDRRX/gkpj17CKtLK/vUiotG1aFun9dFh9moTaWnZ+cSm4wMgjsfeUFbpdJ36SmjeVCVMndt0l5o2dZ4AZDi54WlnOvSu6KEnjpF+jcHa+ohWUvpNMNsWzfQgKduzVYW5plI6yTQy1j6yUi0L3yNFmW3ZhObgzJe4zK29ggUleaZUeh1Bsg749CnnNrTlmWZUullN5gjFTyeEvLsbzRKaX97ZtKks51KHU5lkOtUhOdPOWPtsEroy7HUmMpfqEyQfd6eeSaZVjexZU5QrGhxM11EtSBgGA5hbSKugdtSJy7r4il/i3a4iEmbo2xpB4mzlKzVSbxFBYXdBQlYN4Gy3KCqvUnrACMKliCr9EG3yFx6k3pBCJ2ALOMeekCun5pen/gBOUmbGI5I/TySxsT0oglC3+EUct7qGYepXPT0lmiFnYPn7RPShru/6Asryi9fEE4ShhxAENZIj7nCS+yMHiv/EXpLJecXvKrhDjEScAxQpQlqZdo/XVncQFwdBZkyRlFJ//83DvuCCMLstTFZwRcCsKWrDA4owCy5DaSDZZ5WbiveEDkAGBmeU1rlj8wYafnJN5LZslrll9l77Ss2dmyzFtZWpS0/AtlSZxIDsiK0sZgBdyeL8vsJsc6Pht8lcySX7G5veSJFwVHZatjuciIYg6qFbHkd5Kcx/5RnKiiWdJegcuZH4OkvyWzpD08lzU/Fklw9r0qb91lY2+WVQHHtyo6eW2xSgky2DE3KJsllj4I6LYysFyJqhXI0lPio0F6nVExyl8EArzFsDQ8gueUIN5XLz9WYNkw095npLonCLgkBmVJx2pcZsOs0vWpJrZeMEs8UQKzNJifoljiVX5V5LxElnAa9AS8HAZmaTj8puRwQfq8nHJYXgiFv4x2/PESqXyjWRLZ4z3SppEOOePRWIZloPg3jHRMqsiYZwksL25J7dIbAH3yggN4HEvWycuUsLAsmYYEgiUb+c+ol++o0IGpeGaqZ0jHILPNDeKfkJANkpXGss/pl3kI5DGa6iyh6mP9bR8BZAPinN/P2B6SJRWzyYUxHhgp19WxpB5mrrCMKYOBY5QWlsybmbONjHuBFzQZWBJmVsg54kuWbYMiWeJ7phCRwg9xj9WyxDUUvxxEsJ6g3xjcvTr3sX7KWyi6zwusSBIDxeDpK5AE6qVfoft5QSzBNSsW6YP5iLkkY4M/ghs1S30h35kItSJ4AlLQZuIJ98w9Mc/PCMs/nV63Nw2Xm4Mq+votABHyD9X2W/tElDvLsjNcHv9sOQw7jfrtxJu+0S8IuWMj2H77eiyLS7NcZRPEt8HTnNoC+UWoEwnSgasd88EONJMKyMfjEM+lTsOQxyI3tecghUHi7vTBKp9Yzn0tu18BD1nl0AbTjbrIp/ReB1frL2YZlqHPrP0BJUVSJ3JYUhxwvqS6U11q8CrFMvIZqfBzj+jOHi3oiEbzRO9VG7UeJVhGfxh/gV9Eya94nCZiaMXGLnVofn1iqQkB+zyPi1bo5fzWBKOCUUvRdAG+4fTAUndc9PdX+V13bbek9/WWBSBnhe8Dy+hAhD38GbWmJyCnj1/I6/5ZXkBYRKazZ6lOWXyK37nDSHhRAn8uIK/FnSeFBx4UJnuW+g+E9G6vXpN/+oDnUnupzO3AawjQqFNzyxJZ5GHVO+Pl7q9+Fpfcqb55PV5vXp+/k2HAXYIzGI0tS6hQKd7i2Sx0AlcewByBX7xtWILJZePUJDuWMEu3YYlGcEp+VDEwiYe+g8sYnuOalAmCpGs4/GPYBlEwqHz/2BE1H14TXz64+tw3h83L2IGfmWQGV7px45hajVVtLCmS7sNRdarswDsrNOEBEVSlGNw0VxCUx4o8uN5kNi1jA1/RT2WEmSkXBYCv3XuN/4mEWh4my5Fe6NTIJCPoorYl+8E63Fl6wa4d21TGjRU1gSXpFo4td4X7Wc3gO8PGjqpQ2qLygyZfS75ydF8HPDTACn4f6Tmy6I9oTraCrcvdHKIc39JU9ZZJK7o5Q/Ot5ub54BjoSnJ3c+HIMlBHVqry4AvdxxdEROSIalnyTQu9DUvOXd+ikPsA1KDN5OY07AyfJgscSbDjq7a5cGeYdFGtk0fPN1htWfLDhOAmbBNoNUe7nNeS/TjRcFUDy98sLW28bv4XLBt7lnyvIaroqNP4vJ/cfT883DzP3p+urhH3yaLk9h/6WALo2L5+Eo3ks1CzWyjLwYElPQZCS7HzFDzFzhqawAOp4+OBpWkxxClqNuRJfO/l+sL2FnKnKdvXGqfY/tTGCF9izj/XSD0/sWS3zBjHOdaQER6cQSWCfuPGe01JLy/MsQP7ZD+h7nXKRxslWXKdZcGB8X3K71z47RCz4R1K+LTVhhICIwYD5eQR+JctIez4UV5EwI+1DO+Z+R4n/lodt+IDS2bP9J1J5nwcagfPrgJnzU/BjONDJRwgjzaGcX6/8Fx1AEr5SHzy8B/CAImxghEfezjhWVy1oPFIFHmcdgM4dP0hKGKZPulT8QisNi3pZST2PNS5kJJ7lmlaaUgFf0geIGUakzs7mMwU9EBvVAlhlRcP5IPSJ/wkS/DVzCnR5MfFSBA2KnWqJNO2kNIVikDnFmzLMF9TRD6srS3dyvZmpJ8IEr/O2gfDeCMf8s6VTsFcQCqz7vQmMqtBCSSlex00DlB+u82+XeqnmQnZ8PHOIPJPM34IEDzhnA1RVg5lc7TK1jsY+WhopAD9R4qY5S3lo8aIZA9dywIIyciboKAvKt/QIp2EFaPqMs4dn2uJI7+h+PeTmaczWTzvR+PQmcqJotw6Gaucfh7jsfYWdMhRjdEy+L2ZwEUp5jUBwZwI555BoF3dF7sJnTezP5nxOBmH8IyaV0kr9DIIRzr9ESrfeX+ZLQE2TCnUQjzjtXrDxXq2GF9Oo0XJoTjcpbQ95Lpqy30p97AWioWjjZ3scxrmjrcluQMZwHd1ICy3RIeH/enjXUrc0KkkDLYmFlWu47EznfblxW+J1kEwFTEYy1nwBjoalooUI0t2QCEBS+bbxpK7DZCEoVjDxLLC9boFNwvPzHJZLUu+JcnC0jDImgPd+mlgabnFg8SqepaWmwxYRMdkFc2SL6w1gHRoeZaGm0oMYG7+NrC03BVjAT4438KyJpLEhRYGlpV56TkwLhDJsoZd5AhizZIs7Vl1HsSa5VhWEyDwAbezHMviUs4USr8daYd6H2X5t3zuUedbuQMaBaJY1k0S7qRjWNa3Vx4BjtBnWNZNcQusYZBgWZcHmwYUNyBYftdNcAeoZQdnWcu5UgAShsZZVpDiUgExQDjLutkdATxMmOV52J4tgIcJs6wox6WB/giGsrTcf1k09OFZlOUZ+D0nqB8myrKeyJ0H6gw1yLLsohcQ2iA0yJIfGlAKtBOjQJZ0O31JUE6MwljWGboTsSqDpeG26HIgdntYWZZZO8lB5+ZhLOnBcqVBN5gGYnlOjs8BxbOsouQORXxoOMqy5mCzCNWShVgu66YkoWiWZ7db7qBx2RGW5/ha6uLsCMtzfC11BxOE5bk5sb8omGXddDxQlJT+AywV5gdgeZ4mNjZ+5F9huSqU5bmuWLmB7V9jqRhk+w/sJAWzPE+vQOP8ICzPJ0WSgv+mQ4pl3QUwHiiK9qGT1xllghJQhJ4hlue5ZBWKY9GtuglJKPpMUkgv0Mf6frjqdR7bzWa7Ne90hxPyVo0DNFNswQyCSZ+X+4ZYJ9ieDg11J5ouN5Al/2YuukF12l1udmEJ0a0L1SwDAWNVPrXHEFU1LMJ1BbgeA33+v9lAs8C62dIwS/D+jAnaaDeHcjH5oTHFsEQuYrpRDYbNoaHuXdXeEkfU4WlL1J7IpqztV+h6yG61PyJTOTpSjLlZGEfON1fx0TTineAiuOr8SC3emyIUE8d1xJ4DZd1kP0nHbwsX3cKuh2oFfK07aL43q8FUmn33PKSazUJfI++hb9j3GLpMW42kBneDRtEM92h2s6ZofYXOLjDOK2g+zvud/p+y7/BoTRvDwWIyWYxXXeYm1f8A/DOoPANFfyQAAAAASUVORK5CYII="
+            alt="Your Company">
+          <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your
+            account</h2>
+        </div>
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form class="space-y-6" action="#" method="POST">
+            <div>
+              <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+              <div class="mt-2">
+                <input id="email" name="email" type="email" autocomplete="email" required
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                
+              </div>
+              <div class="mt-2">
+                <input id="password" name="password" type="password" autocomplete="current-password" required
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+
+            <div>
+              <button type="submit"
+                class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
+                in</button>
+            </div>
+          </form>
+
+          
+        </div>
+
+      </div>
+
+    </div>
+  </form>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+</body>
+
+</html>
